@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://yuga1hcitwp5"]
+
+[ext_resource type="Texture2D" uid="uid://2iralvdled5b" path="res://sprites/BinaryPuzzle/LogicGateFrame.png" id="1_eb5nd"]
+[ext_resource type="Script" uid="uid://b1j2gtxxqilwq" path="res://BinaryPuzzle/scripts/logic_gate.gd" id="1_yv8ag"]
+[ext_resource type="LabelSettings" uid="uid://k7tho1q1mud1" path="res://BinaryPuzzle/LogicGates/LogicGateLabelSettings.tres" id="2_bly1b"]
+[ext_resource type="Texture2D" uid="uid://d27vvw7a284lk" path="res://sprites/BinaryPuzzle/LogicGateEntry.png" id="3_bly1b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yv8ag"]
+
+[node name="SimpleLogicGate" type="Node2D"]
+script = ExtResource("1_yv8ag")
+
+[node name="LogicGateFrame" type="Sprite2D" parent="."]
+texture = ExtResource("1_eb5nd")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -7.0
+offset_top = -7.0
+offset_right = 993.0
+offset_bottom = 993.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.014, 0.014)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_yv8ag")
+
+[node name="Label" type="Label" parent="PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "NOT"
+label_settings = ExtResource("2_bly1b")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="LogicGateEntry" type="Sprite2D" parent="."]
+position = Vector2(0, -10)
+rotation = 3.14159
+texture = ExtResource("3_bly1b")
+
+[node name="LogicGateEntry2" type="Sprite2D" parent="."]
+position = Vector2(0, 10)
+texture = ExtResource("3_bly1b")

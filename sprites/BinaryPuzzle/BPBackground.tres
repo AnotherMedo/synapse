@@ -1,0 +1,11 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bxrpnp4foip6o"]
+
+[ext_resource type="Texture2D" uid="uid://csu4hgenqs341" path="res://sprites/BinaryPuzzle/BackgroundTile.png" id="1_nh5u4"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_51mby"]
+texture = ExtResource("1_nh5u4")
+0:0/0 = 0
+1:0/0 = 0
+
+[resource]
+sources/2 = SubResource("TileSetAtlasSource_51mby")

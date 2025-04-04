@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://k7tho1q1mud1"]
+
+[ext_resource type="FontFile" uid="uid://bc0gfjb0ou3ek" path="res://BinaryPuzzle/LogicGates/LogicGateFont.tres" id="1_e1y1m"]
+
+[resource]
+font = ExtResource("1_e1y1m")
+font_size = 300
+font_color = Color(0.187176, 0.187176, 0.187176, 1)
