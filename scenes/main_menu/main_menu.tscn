@@ -435,14 +435,14 @@ autostart = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 250
-theme_override_constants/margin_top = 60
+theme_override_constants/margin_top = 200
 theme_override_constants/margin_right = 250
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu/VBoxContainer/Buttons"]
 layout_mode = 2
 
 [node name="StartButton" type="Button" parent="Menu/VBoxContainer/Buttons/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
 theme = ExtResource("4_uqeha")
 
@@ -465,7 +465,7 @@ custom_effects = [SubResource("RichTextEffect_x2yjq")]
 script = ExtResource("5_wem23")
 
 [node name="OptionsButton" type="Button" parent="Menu/VBoxContainer/Buttons/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
 theme = ExtResource("4_uqeha")
 
@@ -488,7 +488,7 @@ custom_effects = [SubResource("RichTextEffect_x2yjq")]
 script = ExtResource("5_wem23")
 
 [node name="CreditsButton" type="Button" parent="Menu/VBoxContainer/Buttons/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
 theme = ExtResource("4_uqeha")
 text = "
@@ -513,7 +513,7 @@ custom_effects = [SubResource("RichTextEffect_x2yjq")]
 script = ExtResource("5_wem23")
 
 [node name="QuitButton" type="Button" parent="Menu/VBoxContainer/Buttons/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
 theme = ExtResource("4_uqeha")
 
