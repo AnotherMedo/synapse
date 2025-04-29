@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://igwt3c00pm0o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nqap4"]
+bg_color = Color(0, 0, 0, 0.270588)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nqap4"]
+
+[resource]
+Button/styles/hover = SubResource("StyleBoxFlat_nqap4")
+Button/styles/normal = SubResource("StyleBoxEmpty_nqap4")
+RichTextLabel/font_sizes/normal_font_size = 30
