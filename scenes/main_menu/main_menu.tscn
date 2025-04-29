@@ -65,8 +65,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.131379, 0.131379, 0.131379, 1)
 
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
+[node name="ShaderBackground" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_x2yjq")
 layout_mode = 1
 anchors_preset = 15
