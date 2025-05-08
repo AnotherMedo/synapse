@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://yuga1hcitwp5"]
+[gd_scene load_steps=9 format=3 uid="uid://yuga1hcitwp5"]
 
 [ext_resource type="Texture2D" uid="uid://2iralvdled5b" path="res://sprites/BinaryPuzzle/LogicGateFrame.png" id="1_eb5nd"]
 [ext_resource type="Script" uid="uid://b1j2gtxxqilwq" path="res://BinaryPuzzle/scripts/LogicGate.gd" id="1_yv8ag"]
 [ext_resource type="LabelSettings" uid="uid://k7tho1q1mud1" path="res://BinaryPuzzle/LogicGates/LogicGateLabelSettings.tres" id="2_bly1b"]
-[ext_resource type="Texture2D" uid="uid://d27vvw7a284lk" path="res://sprites/BinaryPuzzle/LogicGateEntry.png" id="3_bly1b"]
+[ext_resource type="PackedScene" uid="uid://bh4i2ek33qrxk" path="res://BinaryPuzzle/LogicGates/LogicGateEntry.tscn" id="4_uqiie"]
+[ext_resource type="Script" uid="uid://b0iygrt32vd7e" path="res://BinaryPuzzle/scripts/Output.gd" id="6_04b1e"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yv8ag"]
 
@@ -30,6 +31,7 @@ offset_bottom = 993.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.014, 0.014)
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_yv8ag")
 
 [node name="Label" type="Label" parent="PanelContainer"]
@@ -41,16 +43,19 @@ horizontal_alignment = 1
 vertical_alignment = 1
 clip_text = true
 
-[node name="LogicGateEntry" type="Sprite2D" parent="."]
-material = SubResource("CanvasItemMaterial_yv8ag")
+[node name="LogicGateInput" parent="." instance=ExtResource("4_uqiie")]
 position = Vector2(0, -10)
-rotation = 3.14159
-texture = ExtResource("3_bly1b")
+rotation = -3.14159
 
-[node name="LogicGateEntry2" type="Sprite2D" parent="."]
-material = SubResource("CanvasItemMaterial_yv8ag")
+[node name="LogicGateInput2" parent="." instance=ExtResource("4_uqiie")]
+visible = false
+position = Vector2(0, -10)
+rotation = -3.14159
+
+[node name="LogicGateOuput" parent="." instance=ExtResource("4_uqiie")]
 position = Vector2(0, 10)
-texture = ExtResource("3_bly1b")
+rotation = -6.28318
+script = ExtResource("6_04b1e")
 
 [node name="ColliderArea" type="Area2D" parent="."]
 disable_mode = 2

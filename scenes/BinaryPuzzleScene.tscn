@@ -1,17 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://db0870vpuy634"]
+[gd_scene load_steps=5 format=3 uid="uid://db0870vpuy634"]
 
 [ext_resource type="PackedScene" uid="uid://ctk5ghw6gmb11" path="res://BinaryPuzzle/scenes/GridSystem.tscn" id="1_ajus0"]
 [ext_resource type="Script" uid="uid://dqs6l7f1elmvg" path="res://BinaryPuzzle/scripts/BinaryPuzzleGameManage.gd" id="1_ptwvj"]
 [ext_resource type="PackedScene" uid="uid://b0f0wxndugg6t" path="res://BinaryPuzzle/scenes/GateSelection.tscn" id="2_a8htq"]
+[ext_resource type="PackedScene" uid="uid://cfb8f8l7fv3i7" path="res://BinaryPuzzle/LogicGates/Source.tscn" id="4_g8jf2"]
 
 [node name="BinaryPuzzleScene" type="Node2D"]
 script = ExtResource("1_ptwvj")
 
 [node name="Grid" parent="." instance=ExtResource("1_ajus0")]
-position = Vector2(128, 80)
+position = Vector2(128, 64)
 
 [node name="GateSelection" parent="." instance=ExtResource("2_a8htq")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(128, 72)
-zoom = Vector2(4.5, 4.5)
+position = Vector2(128, 64)
+zoom = Vector2(4.523, 5.063)
+
+[node name="Source" parent="." instance=ExtResource("4_g8jf2")]
+position = Vector2(120, 9)
+
+[node name="Source2" parent="." instance=ExtResource("4_g8jf2")]
+position = Vector2(136, 9)

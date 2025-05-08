@@ -1,15 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://b0f0wxndugg6t"]
+[gd_scene load_steps=7 format=3 uid="uid://b0f0wxndugg6t"]
 
 [ext_resource type="PackedScene" uid="uid://yuga1hcitwp5" path="res://BinaryPuzzle/LogicGates/SimpleLogicGate.tscn" id="1_6ch66"]
-[ext_resource type="Script" uid="uid://cbjke0m1b1bkd" path="res://BinaryPuzzle/scripts/GateSelector.gd" id="1_blvsl"]
-[ext_resource type="PackedScene" uid="uid://83t38had80mt" path="res://BinaryPuzzle/LogicGates/OrLogicGate.tscn" id="2_01voe"]
-[ext_resource type="PackedScene" uid="uid://b2t54pk2eqhhd" path="res://BinaryPuzzle/LogicGates/AndLogicGate.tscn" id="3_blvsl"]
+[ext_resource type="LabelSettings" uid="uid://cqeogohlreywa" path="res://BinaryPuzzle/scenes/GateSelectorLabelSettings.tres" id="2_6m1hl"]
+[ext_resource type="PackedScene" uid="uid://d2lw4d7sn3pdx" path="res://BinaryPuzzle/LogicGates/AndLogicGate.tscn" id="3_8ewce"]
+[ext_resource type="PackedScene" uid="uid://dvk8ty10p5kvw" path="res://BinaryPuzzle/LogicGates/OrLogicGate.tscn" id="4_6m1hl"]
+
+[sub_resource type="GDScript" id="GDScript_8ewce"]
+script/source = "extends Node2D
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6m1hl"]
-size = Vector2(32, 160)
+size = Vector2(32, 128)
 
 [node name="GateSelection" type="Node2D"]
-script = ExtResource("1_blvsl")
+script = SubResource("GDScript_8ewce")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 offset_right = 32.0
@@ -32,8 +36,18 @@ offset_right = 32.0
 offset_bottom = 32.0
 
 [node name="SimpleLogicGate" parent="ScrollContainer/VBoxContainer/ColorRect" instance=ExtResource("1_6ch66")]
-position = Vector2(16, 16)
+position = Vector2(19, 19)
 script = null
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/ColorRect"]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 500.0
+scale = Vector2(0.02, 0.02)
+label_settings = ExtResource("2_6m1hl")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
 
 [node name="ColorRect2" type="ColorRect" parent="ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
@@ -46,9 +60,19 @@ layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 
-[node name="SimpleLogicGate" parent="ScrollContainer/VBoxContainer/ColorRect2" instance=ExtResource("2_01voe")]
-position = Vector2(16, 16)
+[node name="SimpleLogicGate" parent="ScrollContainer/VBoxContainer/ColorRect2" instance=ExtResource("4_6m1hl")]
+position = Vector2(19, 19)
 script = null
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/ColorRect2"]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 500.0
+scale = Vector2(0.02, 0.02)
+label_settings = ExtResource("2_6m1hl")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
 
 [node name="ColorRect3" type="ColorRect" parent="ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
@@ -61,12 +85,22 @@ layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 
-[node name="SimpleLogicGate" parent="ScrollContainer/VBoxContainer/ColorRect3" instance=ExtResource("3_blvsl")]
-position = Vector2(16, 16)
+[node name="SimpleLogicGate2" parent="ScrollContainer/VBoxContainer/ColorRect3" instance=ExtResource("3_8ewce")]
+position = Vector2(19, 19)
 script = null
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/ColorRect3"]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 500.0
+scale = Vector2(0.02, 0.02)
+label_settings = ExtResource("2_6m1hl")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(16, 80)
+position = Vector2(16, 64)
 shape = SubResource("RectangleShape2D_6m1hl")

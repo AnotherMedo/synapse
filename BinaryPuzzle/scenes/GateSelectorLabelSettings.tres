@@ -1,0 +1,18 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cqeogohlreywa"]
+
+[sub_resource type="FontFile" id="FontFile_jdgv6"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/300/0/ascent = 0.0
+cache/0/300/0/descent = 0.0
+cache/0/300/0/underline_position = 0.0
+cache/0/300/0/underline_thickness = 0.0
+cache/0/300/0/scale = 1.0
+
+[resource]
+font = SubResource("FontFile_jdgv6")
+font_size = 300
+font_color = Color(0.877616, 0.877616, 0.877616, 1)

@@ -1,0 +1,64 @@
+[gd_scene load_steps=16 format=3 uid="uid://cfb8f8l7fv3i7"]
+
+[ext_resource type="Texture2D" uid="uid://d0lj3562tjb8d" path="res://sprites/BinaryPuzzle/Source.png" id="1_0gg8m"]
+[ext_resource type="Script" uid="uid://dbxh6oab2rd68" path="res://BinaryPuzzle/scripts/source.gd" id="1_ilpfd"]
+[ext_resource type="PackedScene" uid="uid://bh4i2ek33qrxk" path="res://BinaryPuzzle/LogicGates/LogicGateEntry.tscn" id="2_318ju"]
+[ext_resource type="Script" uid="uid://b0iygrt32vd7e" path="res://BinaryPuzzle/scripts/Output.gd" id="3_ilpfd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_318ju"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ilpfd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g7i1h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7wjfp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fppof"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1vtj7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tmsfu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vrt12"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8q176"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hund7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_llkme"]
+
+[node name="Source" type="Node2D"]
+script = ExtResource("1_ilpfd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0gg8m")
+
+[node name="LogicGateInput" parent="." instance=ExtResource("2_318ju")]
+position = Vector2(0, 5)
+script = ExtResource("3_ilpfd")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -2.0
+offset_top = -4.0
+offset_right = 2.0
+offset_bottom = -1.0
+color = Color(1, 0, 0, 1)
+
+[node name="Button" type="Button" parent="ColorRect"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 0
+offset_left = -6.0
+offset_top = -4.0
+offset_right = 10.0
+offset_bottom = 7.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_318ju")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_ilpfd")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_g7i1h")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_7wjfp")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_fppof")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_1vtj7")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_tmsfu")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_vrt12")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8q176")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_hund7")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_llkme")
