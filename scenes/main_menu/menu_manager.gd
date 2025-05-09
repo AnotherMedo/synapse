@@ -5,7 +5,7 @@ extends Node
 
 
 func _on_start_button_pressed() -> void:
-	print("Should redirect to main scene.")
+	get_tree().change_scene_to_file("res://scenes/puzzles/puzzle_tree.tscn")
 
 func _on_options_button_pressed() -> void:
 	options.visible = true

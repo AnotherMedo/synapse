@@ -465,6 +465,7 @@ custom_effects = [SubResource("RichTextEffect_x2yjq")]
 script = ExtResource("5_wem23")
 
 [node name="OptionsButton" type="Button" parent="Menu/VBoxContainer/Buttons/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
 theme = ExtResource("4_uqeha")
@@ -561,10 +562,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
-text = "[center]CRÉDITS[/center]
-
-PITCH
+text = "PITCH
 Mehdi Alaoui
 
 GAME DESIGN:
@@ -582,6 +582,36 @@ Jeremias Kuehne (menus et UI)
 RESSOURCES
 Police de caractères \"Zatura\" (Main Menu Title) : Burntilldead (https://www.1001fonts.com/zatura-font.html)
 Musique \"Chillwave Nightdrive\" (Main Menu) : Bogart VGM (https://www.facebook.com/BogartVGM/)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Credits"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 50
+text = "
+CRÉDITS"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Credits"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+offset_right = 45.0
+grow_vertical = 0
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="Button" type="Button" parent="Credits/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Back"
 
 [node name="Options" type="Control" parent="."]
 visible = false
@@ -609,10 +639,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -330.0
-offset_top = -194.0
-offset_right = 331.0
-offset_bottom = 285.0
+offset_left = -532.5
+offset_top = -588.0
+offset_right = 532.5
+offset_bottom = 588.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -641,21 +671,66 @@ text = "[center]OPTIONS[/center]"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Fullscreen" type="RichTextLabel" parent="Options/Menu/VBoxContainer"]
+[node name="Fullscreen" type="MarginContainer" parent="Options/Menu/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="ColorRect" type="ColorRect" parent="Options/Menu/VBoxContainer/Fullscreen"]
+layout_mode = 2
+color = Color(0.391185, 0.391185, 0.391185, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Options/Menu/VBoxContainer/Fullscreen"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Text" type="RichTextLabel" parent="Options/Menu/VBoxContainer/Fullscreen/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 bbcode_enabled = true
 text = "[center]Fullscreen[/center]"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Volume" type="RichTextLabel" parent="Options/Menu/VBoxContainer"]
+[node name="CheckBox" type="CheckBox" parent="Options/Menu/VBoxContainer/Fullscreen/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_uqeha")
+icon_alignment = 1
+
+[node name="Volume" type="MarginContainer" parent="Options/Menu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ColorRect" type="ColorRect" parent="Options/Menu/VBoxContainer/Volume"]
+layout_mode = 2
+color = Color(0.391185, 0.391185, 0.391185, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Options/Menu/VBoxContainer/Volume"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Text" type="RichTextLabel" parent="Options/Menu/VBoxContainer/Volume/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 bbcode_enabled = true
 text = "[center]Volume[/center]"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="Options/Menu/VBoxContainer/Volume/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_x2yjq")
@@ -680,3 +755,4 @@ autoplay = true
 [connection signal="pressed" from="Menu/VBoxContainer/Buttons/VBoxContainer/QuitButton" to="MenuManager" method="_on_quit_button_pressed"]
 [connection signal="mouse_entered" from="Menu/VBoxContainer/Buttons/VBoxContainer/QuitButton/QuitLabel" to="Menu/VBoxContainer/Buttons/VBoxContainer/QuitButton/QuitLabel" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Menu/VBoxContainer/Buttons/VBoxContainer/QuitButton/QuitLabel" to="Menu/VBoxContainer/Buttons/VBoxContainer/QuitButton/QuitLabel" method="_on_mouse_exited"]
+[connection signal="pressed" from="Credits/MarginContainer/Button" to="Credits" method="_on_button_pressed"]

@@ -1,0 +1,43 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://bv8pjbyb70p2u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_axp27"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lp0hs"]
+bg_color = Color(0.6, 0.6, 0.6, 0.196078)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_axp27"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yscix"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[resource]
+Button/font_sizes/font_size = 25
+Button/styles/focus = SubResource("StyleBoxEmpty_axp27")
+Button/styles/hover = SubResource("StyleBoxFlat_lp0hs")
+Button/styles/normal = SubResource("StyleBoxFlat_axp27")
+Button/styles/pressed = SubResource("StyleBoxFlat_yscix")
+RichTextLabel/font_sizes/normal_font_size = 60

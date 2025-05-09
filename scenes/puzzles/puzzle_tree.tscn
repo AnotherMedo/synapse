@@ -1,0 +1,233 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtqb7imdqfbj"]
+
+[ext_resource type="Theme" uid="uid://bv8pjbyb70p2u" path="res://assets/themes/puzzle_tree_theme.tres" id="1_01gjk"]
+[ext_resource type="Script" uid="uid://cxcxbisgu2hor" path="res://scenes/puzzles/draw.gd" id="1_gfsnd"]
+
+[node name="PuzzleTree" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.244987, 0.286939, 0.401026, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="LeftMargin" type="Control" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Tree" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Control" parent="MarginContainer/HBoxContainer/Tree"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/Tree/Title"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_01gjk")
+text = "PUZZLES"
+horizontal_alignment = 1
+
+[node name="0_1" type="Control" parent="MarginContainer/HBoxContainer/Tree"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/Tree/0_1"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.5
+offset_top = -15.5
+offset_right = 16.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_01gjk")
+text = "0/1"
+
+[node name="NOT" type="Control" parent="MarginContainer/HBoxContainer/Tree"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/Tree/NOT"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_01gjk")
+text = "NOT
+"
+
+[node name="AND_OR Tree" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Tree"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AND" type="Control" parent="MarginContainer/HBoxContainer/Tree/AND_OR Tree"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/Tree/AND_OR Tree/AND"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_01gjk")
+text = "AND
+"
+
+[node name="OR" type="Control" parent="MarginContainer/HBoxContainer/Tree/AND_OR Tree"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/Tree/AND_OR Tree/OR"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_01gjk")
+text = "OR
+"
+
+[node name="NAND_NOR Tree" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Tree"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="NAND" type="Control" parent="MarginContainer/HBoxContainer/Tree/NAND_NOR Tree"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/Tree/NAND_NOR Tree/NAND"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_01gjk")
+text = "NAND"
+
+[node name="NOR" type="Control" parent="MarginContainer/HBoxContainer/Tree/NAND_NOR Tree"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/Tree/NAND_NOR Tree/NOR"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_01gjk")
+text = "NOR"
+
+[node name="XOR" type="Control" parent="MarginContainer/HBoxContainer/Tree"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/Tree/XOR"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_01gjk")
+text = "XOR"
+
+[node name="RightMargin" type="Control" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Draw" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_gfsnd")
