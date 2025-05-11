@@ -60,7 +60,6 @@ func follow_path(delta: float) -> void:
 		if global_position.distance_to(next_point) < 5:
 			current_path_index += 1
 		else:
-			# ...and slide with no arguments in Godot 4
 			move_and_slide()
 
 func mine_resource() -> void:
