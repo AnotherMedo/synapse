@@ -1,11 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://e7gl22n8ikuy"]
 
-[ext_resource type="Script" uid="uid://dbxh6oab2rd68" path="res://BinaryPuzzle/scripts/source.gd" id="1_7c6ut"]
+[ext_resource type="Script" uid="uid://cj25i8f31n03d" path="res://BinaryPuzzle/scripts/EndPoint.gd" id="1_gvrp6"]
 [ext_resource type="Texture2D" uid="uid://d0lj3562tjb8d" path="res://sprites/BinaryPuzzle/Source.png" id="2_64flb"]
 [ext_resource type="PackedScene" uid="uid://bh4i2ek33qrxk" path="res://BinaryPuzzle/LogicGates/LogicGateEntry.tscn" id="3_dewqi"]
 
-[node name="Source" type="Node2D"]
-script = ExtResource("1_7c6ut")
+[node name="EndPoint" type="Node2D"]
+script = ExtResource("1_gvrp6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = -3.14159

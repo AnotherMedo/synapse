@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://cfb8f8l7fv3i7"]
 
 [ext_resource type="Texture2D" uid="uid://d0lj3562tjb8d" path="res://sprites/BinaryPuzzle/Source.png" id="1_0gg8m"]
-[ext_resource type="Script" uid="uid://dbxh6oab2rd68" path="res://BinaryPuzzle/scripts/source.gd" id="1_ilpfd"]
+[ext_resource type="Script" uid="uid://dbxh6oab2rd68" path="res://BinaryPuzzle/scripts/Source.gd" id="1_ilpfd"]
 [ext_resource type="PackedScene" uid="uid://bh4i2ek33qrxk" path="res://BinaryPuzzle/LogicGates/LogicGateEntry.tscn" id="2_318ju"]
 [ext_resource type="Script" uid="uid://b0iygrt32vd7e" path="res://BinaryPuzzle/scripts/Output.gd" id="3_ilpfd"]
 

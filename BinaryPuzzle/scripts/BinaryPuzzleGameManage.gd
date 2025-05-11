@@ -1,6 +1,11 @@
 extends Node2D
 
 const LogicGate = preload("res://BinaryPuzzle/scripts/LogicGate.gd")
+const Source = preload("res://BinaryPuzzle/scripts/Source.gd")
+const EndPoint = preload("res://BinaryPuzzle/scripts/EndPoint.gd")
+const Puzzle = preload("res://BinaryPuzzle/scripts/Puzzle.gd")
+const PuzzleTest = preload("res://BinaryPuzzle/scripts/PuzzleTest.gd")
+
 const TILE_SIZE = 16;
 
 var is_out_of_barrier:bool = false
@@ -21,6 +26,17 @@ var not_gate_quantity_label: Label
 var and_gate_quantity_label: Label
 var or_gate_quantity_label: Label
 
+var puzzle: Puzzle
+
+var sources: Array[Source]
+var endPoints: Array[EndPoint]
+
+const source = preload("res://BinaryPuzzle/LogicGates/Source.tscn");
+const endpoint = preload("res://BinaryPuzzle/LogicGates/EndPoint.tscn");
+
+@export var start_pos_sources: Vector2
+@export var start_pos_endpoint: Vector2
+
 #-----------------------------------------------General Methods
 
 func get_mouse_pos_snapped_to_grid() -> Vector2:
@@ -32,15 +48,15 @@ func get_mouse_pos_snapped_to_grid() -> Vector2:
 	
 func get_selected_node():
 	logic_gate_instance = selected_logic_gate.instantiate()
-	logic_gate_instance.tree_exited.connect(
-		func():
+	logic_gate_instance.on_destroy.connect(
+		func(logic_gate: LogicGate):
 			#add back to the quantity when destroyed
-			match selected_logic_gate:
-				not_gate:
+			match logic_gate.chosen_logic:
+				LogicGate.Logic.NOT:
 					not_gate_quantity += 1	
-				and_gate:
+				LogicGate.Logic.AND:
 					and_gate_quantity += 1
-				or_gate:
+				LogicGate.Logic.OR:
 					or_gate_quantity += 1
 					
 			update_gate_quantity_texts()
@@ -97,6 +113,9 @@ func _ready() -> void:
 		func(): 
 			if and_gate_quantity > 0:
 				select_node(and_gate))
+				
+	puzzle = AndPuzzle()
+	load_puzzle()
 
 func _process(delta: float) -> void:
 	var grid_position = get_mouse_pos_snapped_to_grid()
@@ -116,3 +135,85 @@ func _unhandled_input(event):
 		and grid_placement_barrier.has_point(logic_gate_instance.global_position)):
 			
 			place_down_selected_logic_gate()
+
+#----------------------------------------------------------Puzzle
+
+func load_puzzle():
+	for i in range(puzzle.num_inputs):
+		var source_instance = source.instantiate()
+		add_child(source_instance);
+		source_instance.global_position = start_pos_sources + Vector2.RIGHT * i
+		
+	for i in range(puzzle.num_outputs):
+		var endpoint_instance = endpoint.instantiate()
+		add_child(endpoint_instance);
+		endpoint_instance.global_position = start_pos_endpoint + Vector2.RIGHT * i
+
+func test_grid() -> bool:
+	var passed_puzzle: bool = true
+	
+	for test in puzzle.tests:
+		passed_puzzle = passed_puzzle and await check_test_passes(test)
+		
+	return passed_puzzle
+	
+func check_test_passes(test: PuzzleTest) -> bool:
+	for i in range(puzzle.num_inputs):
+		sources[i].change_source_val(test.input_vals[i])
+		
+		await get_tree().create_timer(.5).timeout
+		
+	var is_test_passed = true
+	
+	for i in range(puzzle.num_outputs):
+		is_test_passed = (endPoints[i].current_val == test.output_vals[i]) and is_test_passed
+		
+	return is_test_passed
+	
+	
+func create_puzzle_test(inputs: Array[bool], outputs: Array[bool]) -> PuzzleTest:
+	var test = PuzzleTest.new()
+	test.output_vals.append_array(outputs)
+	test.input_vals.append_array(inputs)
+	return test
+	
+func NotPuzzle():
+	var puzzle = Puzzle.new()
+	puzzle.num_inputs = 1
+	puzzle.num_outputs = 1
+	
+	var test_1 = create_puzzle_test([false],[true])
+	
+	var test_2 = create_puzzle_test([true],[false])
+	
+	puzzle.tests.append_array([test_1, test_2])
+
+	return puzzle
+	
+func AndPuzzle():
+	var puzzle = Puzzle.new()
+	puzzle.num_outputs = 1
+	puzzle.num_inputs = 2
+	
+	var test_1 = create_puzzle_test([false,false],[false])
+	var test_2 = create_puzzle_test([false,true],[false])
+	var test_3 = create_puzzle_test([true,false],[false])
+	var test_4 = create_puzzle_test([true,true],[true])
+	
+	puzzle.tests.append_array([test_1, test_2, test_3, test_4])
+	
+	return puzzle
+	
+func OrPuzzle():
+	var puzzle = Puzzle.new()
+	puzzle.num_outputs = 1
+	puzzle.num_inputs = 2
+	
+	var test_1 = create_puzzle_test([false,false],[false])
+	var test_2 = create_puzzle_test([false,true],[true])
+	var test_3 = create_puzzle_test([true,false],[true])
+	var test_4 = create_puzzle_test([true,true],[true])
+	
+	puzzle.tests.append_array([test_1, test_2, test_3, test_4])
+
+	return puzzle

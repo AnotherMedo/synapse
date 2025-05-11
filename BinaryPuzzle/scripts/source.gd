@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 const Output = preload("res://BinaryPuzzle/scripts/Output.gd")
 

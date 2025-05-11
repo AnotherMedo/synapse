@@ -21,6 +21,8 @@ var outputs: Array[Output]
 
 var chosen_logic_callable: Callable
 
+signal on_destroy(logic_gate)
+
 func _ready() -> void:
 	area2d = $"ColliderArea";
 	sprites = get_sprite_children()
@@ -86,7 +88,7 @@ func place_down() -> void:
 					input.disconnect_output()
 				for output in outputs:
 					output.disconnect_input()
-				
+				on_destroy.emit(self)
 				queue_free()
 	)
 
