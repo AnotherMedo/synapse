@@ -10,7 +10,9 @@ font_color = Color(1, 0.764706, 0, 1)
 font_size = 21
 font_color = Color(1, 0.764706, 0, 1)
 
-[node name="Hub" type="Node2D"]
+[node name="Hub" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_8mbd6")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -19,6 +21,7 @@ offset_bottom = 209.0
 color = Color(0.0541003, 9.62615e-08, 0.597024, 0.509804)
 
 [node name="MoneyLabel" type="Label" parent="ColorRect"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 102.0
 offset_top = 6.0
@@ -27,6 +30,7 @@ offset_bottom = 29.0
 text = "Money: 0"
 
 [node name="BinaryButton" type="Button" parent="ColorRect"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 81.0
 offset_top = 166.0
@@ -35,6 +39,7 @@ offset_bottom = 197.0
 text = "Binary Puzzle"
 
 [node name="BuyPickaxeButton" type="Button" parent="ColorRect"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 89.0
 offset_top = 52.0
@@ -43,6 +48,7 @@ offset_bottom = 83.0
 text = "Upgrade pickaxe: 0"
 
 [node name="BuyMinerButton" type="Button" parent="ColorRect"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 89.0
 offset_top = 89.0
@@ -51,6 +57,7 @@ offset_bottom = 120.0
 text = "Add miners: 0"
 
 [node name="PickaxePriceLabel" type="Label" parent="ColorRect"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 20.0
 offset_top = 52.0
@@ -59,7 +66,8 @@ offset_bottom = 82.0
 text = "$10"
 label_settings = SubResource("LabelSettings_wi61l")
 
-[node name="MinerPriceLabel" type="Label" parent="ColorRect"]
+[node name="MinersPriceLabel" type="Label" parent="ColorRect"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 20.0
 offset_top = 87.0

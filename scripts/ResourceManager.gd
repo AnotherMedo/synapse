@@ -5,7 +5,7 @@ class_name ResourceManager
 signal resources_changed(new_value: int)
 
 ## Current amount of money the player owns.
-var resources: int = 0:
+var resources: int = 0: # for debug purposes
 	set = _set_resources
 
 func _set_resources(value: int) -> void:

@@ -2,18 +2,18 @@ extends Control
 class_name HubUI
 
 const BINARY_PUZZLE_SCENE := preload("res://scenes/BinaryPuzzleScene.tscn")
-@onready var _money_label: Label = $"%MoneyLabel"
-@onready var _binary_button: Button = $"%BinaryButton"
-@onready var _buy_pickaxe_button: Button = $"%BuyPickaxeButton"
-@onready var _buy_miner_button: Button = $"%BuyMinerButton"
-@onready var _pickaxe_price_label: Label = $"%PickaxePriceLabel"
-@onready var _miners_price_label: Label = $"%MinersPriceLabel"
+@onready var _money_label: Label = %MoneyLabel
+@onready var _binary_button: Button = %BinaryButton
+@onready var _buy_pickaxe_button: Button = %BuyPickaxeButton
+@onready var _buy_miner_button: Button = %BuyMinerButton
+@onready var _pickaxe_price_label: Label = %PickaxePriceLabel
+@onready var _miners_price_label: Label = %MinersPriceLabel
 
 var pickaxe_level: int = 0
 var miner_count: int = 0
 
 func _ready() -> void:
-	visible = false
+	visible = true # turn to false to integrate with game
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 	_binary_button.pressed.connect(_on_binary_button_pressed)
@@ -34,7 +34,7 @@ func close() -> void:
 
 func _on_binary_button_pressed() -> void:
 	get_tree().paused = false
-	get_tree().change_scene_to(BINARY_PUZZLE_SCENE)
+	get_tree().change_scene_to_packed(BINARY_PUZZLE_SCENE)
 
 func _on_buy_pickaxe_pressed() -> void:
 	var cost := int(10.0 * pow(1.2, pickaxe_level))
