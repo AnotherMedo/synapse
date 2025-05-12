@@ -9,6 +9,3 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAFAAAAAAABAAAAAAAFAAAAAAABAAEAAAAFAAA
 tile_set = ExtResource("1_vnjk2")
 
 [node name="Foreground" type="TileMapLayer" parent="."]
-z_index = 1
-tile_map_data = PackedByteArray("AAAHAAEAAAAJAAAAAAAHAAIAAAAJAAEAAAAHAAMAAAAJAAIAAAAIAAEAAAAKAAAAAAAIAAIAAAAKAAEAAAAIAAMAAAAKAAIAAAA=")
-tile_set = ExtResource("1_vnjk2")

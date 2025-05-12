@@ -6,6 +6,8 @@ const EndPoint = preload("res://BinaryPuzzle/scripts/EndPoint.gd")
 const Puzzle = preload("res://BinaryPuzzle/scripts/Puzzle.gd")
 const PuzzleTest = preload("res://BinaryPuzzle/scripts/PuzzleTest.gd")
 
+const _draw = preload("res://scenes/puzzles/draw.gd")
+
 const TILE_SIZE = 16;
 
 var is_out_of_barrier:bool = false
@@ -29,7 +31,7 @@ var or_gate_quantity_label: Label
 const TestDisplay = preload("res://BinaryPuzzle/scripts/TestDisplay.gd");
 var testDisplayer: TestDisplay
 
-var puzzle: Puzzle
+var _puzzle: Puzzle
 var is_checking_puzzle: bool = false
 
 var sources: Array[Source]
@@ -117,16 +119,13 @@ func _ready() -> void:
 		func(): 
 			if and_gate_quantity > 0:
 				select_node(and_gate))
-				
-	puzzle = AndPuzzle()
-	load_puzzle()
 	
 	var check_answer_button: Button = $"CheckAnswerButton"
 	
 	check_answer_button.pressed.connect(check_puzzle)
 	
 	testDisplayer = $"Tests"
-	testDisplayer.display_tests(puzzle.tests)
+	testDisplayer.display_tests(_puzzle.tests)
 	
 
 func _process(delta: float) -> void:
@@ -150,7 +149,9 @@ func _unhandled_input(event):
 
 #----------------------------------------------------------Puzzle
 
-func load_puzzle():
+func load_puzzle(puzzle: Puzzle):
+	_puzzle = puzzle 
+	
 	for i in range(puzzle.num_inputs):
 		var source_instance : Source = source.instantiate()
 		add_child(source_instance)
@@ -171,71 +172,39 @@ func check_puzzle() -> bool:
 	
 	var passed_puzzle: bool = true
 	
-	for test in puzzle.tests:
+	for test in _puzzle.tests:
 		passed_puzzle = passed_puzzle and await check_test_passes(test)
 		
 	print("Puzzle check is: ", passed_puzzle)
 	is_checking_puzzle = false
+	
+	if passed_puzzle:
+		load_puzzle_selection_menu()
+		
 	return passed_puzzle
 	
 func check_test_passes(test: PuzzleTest) -> bool:
 	
-	for i in range(puzzle.num_inputs):
+	for i in range(_puzzle.num_inputs):
 		sources[i].change_source_val(test.input_vals[i])
 		
 		await get_tree().create_timer(.5).timeout
 		
 	var is_test_passed = true
 	
-	for i in range(puzzle.num_outputs):
+	for i in range(_puzzle.num_outputs):
 		is_test_passed = (endpoints[i].current_val == test.output_vals[i]) and is_test_passed
 		
 	return is_test_passed
 	
 	
-func create_puzzle_test(inputs: Array[bool], outputs: Array[bool]) -> PuzzleTest:
-	var test = PuzzleTest.new()
-	test.output_vals.append_array(outputs)
-	test.input_vals.append_array(inputs)
-	return test
+func load_puzzle_selection_menu():
+	var target_scene:Node = load("res://scenes/puzzles/puzzle_tree.tscn").instantiate()
 	
-func NotPuzzle():
-	var puzzle = Puzzle.new()
-	puzzle.num_inputs = 1
-	puzzle.num_outputs = 1
 	
-	var test_1 = create_puzzle_test([false],[true])
+	get_tree().root.add_child(target_scene)
+	get_tree().current_scene.queue_free()
+	get_tree().current_scene = target_scene
 	
-	var test_2 = create_puzzle_test([true],[false])
-	
-	puzzle.tests.append_array([test_1, test_2])
-
-	return puzzle
-	
-func AndPuzzle():
-	var puzzle = Puzzle.new()
-	puzzle.num_outputs = 1
-	puzzle.num_inputs = 2
-	
-	var test_1 = create_puzzle_test([false,false],[false])
-	var test_2 = create_puzzle_test([false,true],[false])
-	var test_3 = create_puzzle_test([true,false],[false])
-	var test_4 = create_puzzle_test([true,true],[true])
-	
-	puzzle.tests.append_array([test_1, test_2, test_3, test_4])
-	
-	return puzzle
-	
-func OrPuzzle():
-	var puzzle = Puzzle.new()
-	puzzle.num_outputs = 1
-	puzzle.num_inputs = 2
-	
-	var test_1 = create_puzzle_test([false,false],[false])
-	var test_2 = create_puzzle_test([false,true],[true])
-	var test_3 = create_puzzle_test([true,false],[true])
-	var test_4 = create_puzzle_test([true,true],[true])
-	
-	puzzle.tests.append_array([test_1, test_2, test_3, test_4])
-
-	return puzzle
+	var puzzles_handler: _draw = target_scene.get_node("Draw")
+	puzzles_handler.set_done(_puzzle.name)

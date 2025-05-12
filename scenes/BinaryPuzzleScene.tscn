@@ -1,12 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://db0870vpuy634"]
+[gd_scene load_steps=9 format=3 uid="uid://ctk5ghw6gmb11"]
 
-[ext_resource type="PackedScene" uid="uid://ctk5ghw6gmb11" path="res://BinaryPuzzle/scenes/GridSystem.tscn" id="1_ajus0"]
 [ext_resource type="Script" uid="uid://dqs6l7f1elmvg" path="res://BinaryPuzzle/scripts/BinaryPuzzleGameManage.gd" id="1_ptwvj"]
+[ext_resource type="PackedScene" uid="uid://ctk5ghw6gmb11" path="res://BinaryPuzzle/scenes/GridSystem.tscn" id="2_46gec"]
 [ext_resource type="PackedScene" uid="uid://b0f0wxndugg6t" path="res://BinaryPuzzle/scenes/GateSelection.tscn" id="2_a8htq"]
 [ext_resource type="PackedScene" uid="uid://cfb8f8l7fv3i7" path="res://BinaryPuzzle/LogicGates/Source.tscn" id="4_g8jf2"]
 [ext_resource type="PackedScene" uid="uid://gjg2idxrpm81" path="res://BinaryPuzzle/scenes/Tests.tscn" id="4_pskgc"]
-[ext_resource type="Script" uid="uid://ocnh6fb16ldq" path="res://BinaryPuzzle/scripts/TestDisplay.gd" id="5_46gec"]
 [ext_resource type="PackedScene" uid="uid://e7gl22n8ikuy" path="res://BinaryPuzzle/LogicGates/EndPoint.tscn" id="5_ls1a7"]
+[ext_resource type="Script" uid="uid://c2kcnlaflw71k" path="res://BinaryPuzzle/scripts/PauseMenu.gd" id="8_6euo1"]
 [ext_resource type="LabelSettings" uid="uid://cqeogohlreywa" path="res://BinaryPuzzle/scenes/GateSelectorLabelSettings.tres" id="8_21gev"]
 
 [node name="BinaryPuzzleScene" type="Node2D"]
@@ -14,14 +14,13 @@ script = ExtResource("1_ptwvj")
 start_pos_sources = Vector2(120, 9)
 start_pos_endpoint = Vector2(120, 119)
 
-[node name="Grid" parent="." instance=ExtResource("1_ajus0")]
+[node name="GridSystem" parent="." instance=ExtResource("2_46gec")]
 position = Vector2(128, 64)
 
 [node name="GateSelection" parent="." instance=ExtResource("2_a8htq")]
 
 [node name="Tests" parent="." instance=ExtResource("4_pskgc")]
 position = Vector2(224, 16)
-script = ExtResource("5_46gec")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(128, 64)
@@ -77,3 +76,58 @@ text = "Tests"
 label_settings = ExtResource("8_21gev")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="PauseMenu" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("8_6euo1")
+
+[node name="Background" type="ColorRect" parent="PauseMenu"]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 128.0
+color = Color(0.215686, 0.215686, 0.215686, 0.560784)
+
+[node name="Buttons" type="CenterContainer" parent="PauseMenu"]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 128.0
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu/Buttons"]
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 2
+color = Color(0.641934, 0.641934, 0.641934, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/Buttons"]
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="PauseMenu/Buttons/VBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PauseMenu/Buttons/VBoxContainer/ResumeButton"]
+layout_mode = 1
+offset_left = 4.0
+offset_top = -1.0
+offset_right = 2129.0
+offset_bottom = 1149.0
+scale = Vector2(0.02, 0.02)
+text = "Resume Game"
+label_settings = ExtResource("8_21gev")
+
+[node name="MenuButton" type="Button" parent="PauseMenu/Buttons/VBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PauseMenu/Buttons/VBoxContainer/MenuButton"]
+layout_mode = 1
+offset_left = 4.0
+offset_top = -1.0
+offset_right = 2129.0
+offset_bottom = 1149.0
+scale = Vector2(0.02, 0.02)
+text = "Puzzle Selection"
+label_settings = ExtResource("8_21gev")
