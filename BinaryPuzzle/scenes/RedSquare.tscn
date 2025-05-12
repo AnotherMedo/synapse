@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dayvflyt8wsv3"]
+
+[ext_resource type="Texture2D" uid="uid://q53u1vsd8sow" path="res://sprites/BinaryPuzzle/red_square.png" id="1_vmyp6"]
+
+[node name="GreenSquare" type="TextureRect"]
+custom_minimum_size = Vector2(5, 5)
+texture = ExtResource("1_vmyp6")
+expand_mode = 1
+stretch_mode = 4

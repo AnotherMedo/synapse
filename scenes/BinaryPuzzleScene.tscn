@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://db0870vpuy634"]
+[gd_scene load_steps=9 format=3 uid="uid://db0870vpuy634"]
 
 [ext_resource type="PackedScene" uid="uid://ctk5ghw6gmb11" path="res://BinaryPuzzle/scenes/GridSystem.tscn" id="1_ajus0"]
 [ext_resource type="Script" uid="uid://dqs6l7f1elmvg" path="res://BinaryPuzzle/scripts/BinaryPuzzleGameManage.gd" id="1_ptwvj"]
 [ext_resource type="PackedScene" uid="uid://b0f0wxndugg6t" path="res://BinaryPuzzle/scenes/GateSelection.tscn" id="2_a8htq"]
 [ext_resource type="PackedScene" uid="uid://cfb8f8l7fv3i7" path="res://BinaryPuzzle/LogicGates/Source.tscn" id="4_g8jf2"]
+[ext_resource type="PackedScene" uid="uid://gjg2idxrpm81" path="res://BinaryPuzzle/scenes/Tests.tscn" id="4_pskgc"]
+[ext_resource type="Script" uid="uid://ocnh6fb16ldq" path="res://BinaryPuzzle/scripts/TestDisplay.gd" id="5_46gec"]
 [ext_resource type="PackedScene" uid="uid://e7gl22n8ikuy" path="res://BinaryPuzzle/LogicGates/EndPoint.tscn" id="5_ls1a7"]
+[ext_resource type="LabelSettings" uid="uid://cqeogohlreywa" path="res://BinaryPuzzle/scenes/GateSelectorLabelSettings.tres" id="8_21gev"]
 
 [node name="BinaryPuzzleScene" type="Node2D"]
 script = ExtResource("1_ptwvj")
@@ -15,6 +18,10 @@ start_pos_endpoint = Vector2(120, 119)
 position = Vector2(128, 64)
 
 [node name="GateSelection" parent="." instance=ExtResource("2_a8htq")]
+
+[node name="Tests" parent="." instance=ExtResource("4_pskgc")]
+position = Vector2(224, 16)
+script = ExtResource("5_46gec")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(128, 64)
@@ -35,3 +42,38 @@ position = Vector2(120, 119)
 [node name="EndPoint2" parent="." instance=ExtResource("5_ls1a7")]
 visible = false
 position = Vector2(136, 119)
+
+[node name="CheckAnswerButton" type="Button" parent="."]
+offset_left = 224.0
+offset_top = 110.0
+offset_right = 256.0
+offset_bottom = 128.0
+
+[node name="Label" type="Label" parent="CheckAnswerButton"]
+custom_minimum_size = Vector2(2100, 1200)
+layout_mode = 0
+offset_right = 2000.0
+offset_bottom = 1000.0
+scale = Vector2(0.015, 0.015)
+text = "Check Tests"
+label_settings = ExtResource("8_21gev")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(32, 16)
+offset_left = 224.0
+offset_right = 256.0
+offset_bottom = 16.0
+color = Color(0.306923, 0.306923, 0.306923, 1)
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_top = 3.0
+offset_right = 1546.0
+offset_bottom = 403.0
+scale = Vector2(0.02, 0.02)
+text = "Tests"
+label_settings = ExtResource("8_21gev")
+horizontal_alignment = 1
+vertical_alignment = 1

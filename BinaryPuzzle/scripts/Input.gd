@@ -53,5 +53,3 @@ func recieve_func(message: Output.Message):
 	current_val = message.sent_val
 	recieve.emit(message)
 	
-	print("recieved ", message.sent_val)
-	

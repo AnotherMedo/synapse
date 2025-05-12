@@ -26,10 +26,14 @@ var not_gate_quantity_label: Label
 var and_gate_quantity_label: Label
 var or_gate_quantity_label: Label
 
+const TestDisplay = preload("res://BinaryPuzzle/scripts/TestDisplay.gd");
+var testDisplayer: TestDisplay
+
 var puzzle: Puzzle
+var is_checking_puzzle: bool = false
 
 var sources: Array[Source]
-var endPoints: Array[EndPoint]
+var endpoints: Array[EndPoint]
 
 const source = preload("res://BinaryPuzzle/LogicGates/Source.tscn");
 const endpoint = preload("res://BinaryPuzzle/LogicGates/EndPoint.tscn");
@@ -116,6 +120,14 @@ func _ready() -> void:
 				
 	puzzle = AndPuzzle()
 	load_puzzle()
+	
+	var check_answer_button: Button = $"CheckAnswerButton"
+	
+	check_answer_button.pressed.connect(check_puzzle)
+	
+	testDisplayer = $"Tests"
+	testDisplayer.display_tests(puzzle.tests)
+	
 
 func _process(delta: float) -> void:
 	var grid_position = get_mouse_pos_snapped_to_grid()
@@ -140,24 +152,34 @@ func _unhandled_input(event):
 
 func load_puzzle():
 	for i in range(puzzle.num_inputs):
-		var source_instance = source.instantiate()
-		add_child(source_instance);
-		source_instance.global_position = start_pos_sources + Vector2.RIGHT * i
+		var source_instance : Source = source.instantiate()
+		add_child(source_instance)
+		source_instance.global_position = start_pos_sources + Vector2.RIGHT * i * TILE_SIZE
+		sources.append(source_instance)
 		
 	for i in range(puzzle.num_outputs):
-		var endpoint_instance = endpoint.instantiate()
-		add_child(endpoint_instance);
-		endpoint_instance.global_position = start_pos_endpoint + Vector2.RIGHT * i
+		var endpoint_instance: EndPoint = endpoint.instantiate()
+		add_child(endpoint_instance)
+		endpoint_instance.global_position = start_pos_endpoint + Vector2.RIGHT * i * TILE_SIZE
+		endpoints.append(endpoint_instance)
 
-func test_grid() -> bool:
+func check_puzzle() -> bool:
+	if (is_checking_puzzle): 
+		return false
+		
+	is_checking_puzzle = true
+	
 	var passed_puzzle: bool = true
 	
 	for test in puzzle.tests:
 		passed_puzzle = passed_puzzle and await check_test_passes(test)
 		
+	print("Puzzle check is: ", passed_puzzle)
+	is_checking_puzzle = false
 	return passed_puzzle
 	
 func check_test_passes(test: PuzzleTest) -> bool:
+	
 	for i in range(puzzle.num_inputs):
 		sources[i].change_source_val(test.input_vals[i])
 		
@@ -166,7 +188,7 @@ func check_test_passes(test: PuzzleTest) -> bool:
 	var is_test_passed = true
 	
 	for i in range(puzzle.num_outputs):
-		is_test_passed = (endPoints[i].current_val == test.output_vals[i]) and is_test_passed
+		is_test_passed = (endpoints[i].current_val == test.output_vals[i]) and is_test_passed
 		
 	return is_test_passed
 	

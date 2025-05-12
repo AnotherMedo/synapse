@@ -138,7 +138,6 @@ func update_logic_gate_result(message: Output.Message):
 		set_modular_color_on_sprites(valid_position_color)
 	else:
 		set_modular_color_on_sprites(invalid_position_color)
-	print(final_output)
 	message.sent_val = final_output
 	
 	for output in outputs:
