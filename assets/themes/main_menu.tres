@@ -1,0 +1,13 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://igwt3c00pm0o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lru3c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_av2uu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nqap4"]
+
+[resource]
+Button/styles/focus = SubResource("StyleBoxEmpty_lru3c")
+Button/styles/hover = SubResource("StyleBoxEmpty_av2uu")
+Button/styles/normal = SubResource("StyleBoxEmpty_nqap4")
+RichTextLabel/font_sizes/normal_font_size = 50

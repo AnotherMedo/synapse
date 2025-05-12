@@ -1,0 +1,758 @@
+[gd_scene load_steps=20 format=3 uid="uid://davwb8r1gf5sh"]
+
+[ext_resource type="Script" uid="uid://cd0tb5hm616b6" path="res://scenes/main_menu/menu_manager.gd" id="1_3ovsr"]
+[ext_resource type="FontFile" uid="uid://i7ljui5x1pe1" path="res://assets/fonts/zatura/Zatura-Demo.otf" id="1_sk7su"]
+[ext_resource type="Script" uid="uid://bx1s2sm5d4n0e" path="res://assets/text_effects/main_menu_title_text_effect.gd" id="2_ob46e"]
+[ext_resource type="Script" uid="uid://cnkdvumtqvuyy" path="res://scenes/main_menu/letter.gd" id="2_saybu"]
+[ext_resource type="Shader" uid="uid://b6uvm3gek7v8s" path="res://assets/shaders/main_menu_shader.gdshader" id="2_thkx5"]
+[ext_resource type="Theme" uid="uid://igwt3c00pm0o" path="res://assets/themes/main_menu.tres" id="4_uqeha"]
+[ext_resource type="Script" uid="uid://d1td1eys6j87q" path="res://scenes/main_menu/main_menu_buttons.gd" id="5_wem23"]
+[ext_resource type="Script" uid="uid://cjwqnckegbq2l" path="res://scenes/main_menu/credits.gd" id="7_4xg86"]
+[ext_resource type="Script" uid="uid://v547od8hijhp" path="res://scenes/main_menu/options.gd" id="8_thkx5"]
+[ext_resource type="AudioStream" uid="uid://ewdaldnc7oil" path="res://assets/musics/Chillwave_Nightdrive.mp3" id="10_x2yjq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x2yjq"]
+shader = ExtResource("2_thkx5")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_ob46e"]
+script = ExtResource("2_ob46e")
+metadata/_custom_type_script = "uid://bx1s2sm5d4n0e"
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_uqeha"]
+script = ExtResource("2_ob46e")
+metadata/_custom_type_script = "uid://bx1s2sm5d4n0e"
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_wem23"]
+script = ExtResource("2_ob46e")
+metadata/_custom_type_script = "uid://bx1s2sm5d4n0e"
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_3ovsr"]
+script = ExtResource("2_ob46e")
+metadata/_custom_type_script = "uid://bx1s2sm5d4n0e"
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_5seab"]
+script = ExtResource("2_ob46e")
+metadata/_custom_type_script = "uid://bx1s2sm5d4n0e"
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_4xg86"]
+script = ExtResource("2_ob46e")
+metadata/_custom_type_script = "uid://bx1s2sm5d4n0e"
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_thkx5"]
+script = ExtResource("2_ob46e")
+metadata/_custom_type_script = "uid://bx1s2sm5d4n0e"
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_x2yjq"]
+script = ExtResource("2_ob46e")
+metadata/_custom_type_script = "uid://bx1s2sm5d4n0e"
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuManager" type="Node" parent="."]
+script = ExtResource("1_3ovsr")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.131379, 0.131379, 0.131379, 1)
+
+[node name="ShaderBackground" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_x2yjq")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Menu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -330.5
+offset_top = -239.5
+offset_right = 330.5
+offset_bottom = 190.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="HBoxContainer" parent="Menu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="S1Control" type="Control" parent="Menu/VBoxContainer/Title"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Center" type="Control" parent="Menu/VBoxContainer/Title/S1Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="S1" type="RichTextLabel" parent="Menu/VBoxContainer/Title/S1Control/Center"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.5
+offset_top = -60.0
+offset_right = 40.5
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 20
+theme_override_fonts/normal_font = ExtResource("1_sk7su")
+theme_override_font_sizes/normal_font_size = 150
+bbcode_enabled = true
+text = "[main_menu_title][center]S[/center][/main_menu_title]"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+custom_effects = [SubResource("RichTextEffect_ob46e")]
+script = ExtResource("2_saybu")
+
+[node name="Delay" type="Timer" parent="Menu/VBoxContainer/Title/S1Control/Center/S1"]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[node name="YControl" type="Control" parent="Menu/VBoxContainer/Title"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Center" type="Control" parent="Menu/VBoxContainer/Title/YControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Y" type="RichTextLabel" parent="Menu/VBoxContainer/Title/YControl/Center"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.0
+offset_top = -60.0
+offset_right = 41.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 20
+theme_override_fonts/normal_font = ExtResource("1_sk7su")
+theme_override_font_sizes/normal_font_size = 150
+bbcode_enabled = true
+text = "[main_menu_title][center]Y[/center][/main_menu_title]"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+custom_effects = [SubResource("RichTextEffect_uqeha")]
+script = ExtResource("2_saybu")
+
+[node name="Delay" type="Timer" parent="Menu/VBoxContainer/Title/YControl/Center/Y"]
+wait_time = 0.2
+one_shot = true
+autostart = true
+
+[node name="NControl" type="Control" parent="Menu/VBoxContainer/Title"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Center" type="Control" parent="Menu/VBoxContainer/Title/NControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="N" type="RichTextLabel" parent="Menu/VBoxContainer/Title/NControl/Center"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.0
+offset_top = -60.0
+offset_right = 41.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 20
+theme_override_fonts/normal_font = ExtResource("1_sk7su")
+theme_override_font_sizes/normal_font_size = 150
+bbcode_enabled = true
+text = "[main_menu_title][center]N[/center][/main_menu_title]"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+custom_effects = [SubResource("RichTextEffect_wem23")]
+script = ExtResource("2_saybu")
+
+[node name="Delay" type="Timer" parent="Menu/VBoxContainer/Title/NControl/Center/N"]
+wait_time = 0.3
+one_shot = true
+autostart = true
+
+[node name="AControl" type="Control" parent="Menu/VBoxContainer/Title"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Center" type="Control" parent="Menu/VBoxContainer/Title/AControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="A" type="RichTextLabel" parent="Menu/VBoxContainer/Title/AControl/Center"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.5
+offset_top = -60.0
+offset_right = 40.5
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 20
+theme_override_fonts/normal_font = ExtResource("1_sk7su")
+theme_override_font_sizes/normal_font_size = 150
+bbcode_enabled = true
+text = "[main_menu_title][center]A[/center][/main_menu_title]"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+custom_effects = [SubResource("RichTextEffect_3ovsr")]
+script = ExtResource("2_saybu")
+
+[node name="Delay" type="Timer" parent="Menu/VBoxContainer/Title/AControl/Center/A"]
+wait_time = 0.4
+one_shot = true
+autostart = true
+
+[node name="PControl" type="Control" parent="Menu/VBoxContainer/Title"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Center" type="Control" parent="Menu/VBoxContainer/Title/PControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="P" type="RichTextLabel" parent="Menu/VBoxContainer/Title/PControl/Center"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.0
+offset_top = -60.0
+offset_right = 41.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 20
+theme_override_fonts/normal_font = ExtResource("1_sk7su")
+theme_override_font_sizes/normal_font_size = 150
+bbcode_enabled = true
+text = "[main_menu_title][center]P[/center][/main_menu_title]"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+custom_effects = [SubResource("RichTextEffect_5seab")]
+script = ExtResource("2_saybu")
+
+[node name="Delay" type="Timer" parent="Menu/VBoxContainer/Title/PControl/Center/P"]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[node name="S2Control" type="Control" parent="Menu/VBoxContainer/Title"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Center" type="Control" parent="Menu/VBoxContainer/Title/S2Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="S2" type="RichTextLabel" parent="Menu/VBoxContainer/Title/S2Control/Center"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.0
+offset_top = -60.0
+offset_right = 41.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 20
+theme_override_fonts/normal_font = ExtResource("1_sk7su")
+theme_override_font_sizes/normal_font_size = 150
+bbcode_enabled = true
+text = "[main_menu_title][center]S[/center][/main_menu_title]"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+custom_effects = [SubResource("RichTextEffect_4xg86")]
+script = ExtResource("2_saybu")
+
+[node name="Delay" type="Timer" parent="Menu/VBoxContainer/Title/S2Control/Center/S2"]
+wait_time = 0.6
+one_shot = true
+autostart = true
+
+[node name="EControl" type="Control" parent="Menu/VBoxContainer/Title"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Center" type="Control" parent="Menu/VBoxContainer/Title/EControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="E" type="RichTextLabel" parent="Menu/VBoxContainer/Title/EControl/Center"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.0
+offset_top = -60.0
+offset_right = 41.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 20
+theme_override_fonts/normal_font = ExtResource("1_sk7su")
+theme_override_font_sizes/normal_font_size = 150
+bbcode_enabled = true
+text = "[main_menu_title][center]E[/center][/main_menu_title]"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+custom_effects = [SubResource("RichTextEffect_thkx5")]
+script = ExtResource("2_saybu")
+
+[node name="Delay" type="Timer" parent="Menu/VBoxContainer/Title/EControl/Center/E"]
+wait_time = 0.7
+one_shot = true
+autostart = true
+
+[node name="Buttons" type="MarginContainer" parent="Menu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 250
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 250
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/VBoxContainer/Buttons"]
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="Menu/VBoxContainer/Buttons/VBoxContainer"]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+theme = ExtResource("4_uqeha")
+
+[node name="StartLabel" type="RichTextLabel" parent="Menu/VBoxContainer/Buttons/VBoxContainer/StartButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = ExtResource("4_uqeha")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+bbcode_enabled = true
+text = "START"
+horizontal_alignment = 1
+vertical_alignment = 1
+custom_effects = [SubResource("RichTextEffect_x2yjq")]
+script = ExtResource("5_wem23")
+
+[node name="OptionsButton" type="Button" parent="Menu/VBoxContainer/Buttons/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+theme = ExtResource("4_uqeha")
+
+[node name="OptionsLabel" type="RichTextLabel" parent="Menu/VBoxContainer/Buttons/VBoxContainer/OptionsButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = ExtResource("4_uqeha")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+bbcode_enabled = true
+text = "OPTIONS"
+horizontal_alignment = 1
+vertical_alignment = 1
+custom_effects = [SubResource("RichTextEffect_x2yjq")]
+script = ExtResource("5_wem23")
+
+[node name="CreditsButton" type="Button" parent="Menu/VBoxContainer/Buttons/VBoxContainer"]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+theme = ExtResource("4_uqeha")
+text = "
+"
+
+[node name="CreditsLabel" type="RichTextLabel" parent="Menu/VBoxContainer/Buttons/VBoxContainer/CreditsButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = ExtResource("4_uqeha")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+bbcode_enabled = true
+text = "CREDITS"
+horizontal_alignment = 1
+vertical_alignment = 1
+custom_effects = [SubResource("RichTextEffect_x2yjq")]
+script = ExtResource("5_wem23")
+
+[node name="QuitButton" type="Button" parent="Menu/VBoxContainer/Buttons/VBoxContainer"]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+theme = ExtResource("4_uqeha")
+
+[node name="QuitLabel" type="RichTextLabel" parent="Menu/VBoxContainer/Buttons/VBoxContainer/QuitButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = ExtResource("4_uqeha")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+bbcode_enabled = true
+text = "QUIT"
+horizontal_alignment = 1
+vertical_alignment = 1
+custom_effects = [SubResource("RichTextEffect_x2yjq")]
+script = ExtResource("5_wem23")
+
+[node name="Credits" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_4xg86")
+
+[node name="Background" type="ColorRect" parent="Credits"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Text" type="RichTextLabel" parent="Credits"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "PITCH
+Mehdi Alaoui
+
+GAME DESIGN:
+Timaël Andrié
+André William Cadet
+Jeremias Kuehne
+
+DÉVELOPPEMENT
+Mehdi Alaoui (hub et environnement)
+Timaël Andrié (personnage joueur)
+Mathéo Ernesto Chacon (robots)
+André William Cadet (puzzles)
+Jeremias Kuehne (menus et UI)
+
+RESSOURCES
+Police de caractères \"Zatura\" (Main Menu Title) : Burntilldead (https://www.1001fonts.com/zatura-font.html)
+Musique \"Chillwave Nightdrive\" (Main Menu) : Bogart VGM (https://www.facebook.com/BogartVGM/)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Credits"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 50
+text = "
+CRÉDITS"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Credits"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+offset_right = 45.0
+grow_vertical = 0
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="Button" type="Button" parent="Credits/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Back"
+
+[node name="Options" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_thkx5")
+
+[node name="Background" type="ColorRect" parent="Options"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.756863)
+
+[node name="Menu" type="Control" parent="Options"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -532.5
+offset_top = -588.0
+offset_right = 532.5
+offset_bottom = 588.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Options/Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.214103, 0.214103, 0.214103, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="RichTextLabel" parent="Options/Menu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[center]OPTIONS[/center]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Fullscreen" type="MarginContainer" parent="Options/Menu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="ColorRect" type="ColorRect" parent="Options/Menu/VBoxContainer/Fullscreen"]
+layout_mode = 2
+color = Color(0.391185, 0.391185, 0.391185, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Options/Menu/VBoxContainer/Fullscreen"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Text" type="RichTextLabel" parent="Options/Menu/VBoxContainer/Fullscreen/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[center]Fullscreen[/center]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="Options/Menu/VBoxContainer/Fullscreen/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_uqeha")
+icon_alignment = 1
+
+[node name="Volume" type="MarginContainer" parent="Options/Menu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ColorRect" type="ColorRect" parent="Options/Menu/VBoxContainer/Volume"]
+layout_mode = 2
+color = Color(0.391185, 0.391185, 0.391185, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Options/Menu/VBoxContainer/Volume"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Text" type="RichTextLabel" parent="Options/Menu/VBoxContainer/Volume/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[center]Volume[/center]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="Options/Menu/VBoxContainer/Volume/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_x2yjq")
+autoplay = true
+
+[connection signal="timeout" from="Menu/VBoxContainer/Title/S1Control/Center/S1/Delay" to="Menu/VBoxContainer/Title/S1Control/Center/S1" method="_on_delay_timeout"]
+[connection signal="timeout" from="Menu/VBoxContainer/Title/YControl/Center/Y/Delay" to="Menu/VBoxContainer/Title/YControl/Center/Y" method="_on_delay_timeout"]
+[connection signal="timeout" from="Menu/VBoxContainer/Title/NControl/Center/N/Delay" to="Menu/VBoxContainer/Title/NControl/Center/N" method="_on_delay_timeout"]
+[connection signal="timeout" from="Menu/VBoxContainer/Title/AControl/Center/A/Delay" to="Menu/VBoxContainer/Title/AControl/Center/A" method="_on_delay_timeout"]
+[connection signal="timeout" from="Menu/VBoxContainer/Title/PControl/Center/P/Delay" to="Menu/VBoxContainer/Title/PControl/Center/P" method="_on_delay_timeout"]
+[connection signal="timeout" from="Menu/VBoxContainer/Title/S2Control/Center/S2/Delay" to="Menu/VBoxContainer/Title/S2Control/Center/S2" method="_on_delay_timeout"]
+[connection signal="timeout" from="Menu/VBoxContainer/Title/EControl/Center/E/Delay" to="Menu/VBoxContainer/Title/EControl/Center/E" method="_on_delay_timeout"]
+[connection signal="pressed" from="Menu/VBoxContainer/Buttons/VBoxContainer/StartButton" to="MenuManager" method="_on_start_button_pressed"]
+[connection signal="mouse_entered" from="Menu/VBoxContainer/Buttons/VBoxContainer/StartButton/StartLabel" to="Menu/VBoxContainer/Buttons/VBoxContainer/StartButton/StartLabel" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Menu/VBoxContainer/Buttons/VBoxContainer/StartButton/StartLabel" to="Menu/VBoxContainer/Buttons/VBoxContainer/StartButton/StartLabel" method="_on_mouse_exited"]
+[connection signal="pressed" from="Menu/VBoxContainer/Buttons/VBoxContainer/OptionsButton" to="MenuManager" method="_on_options_button_pressed"]
+[connection signal="mouse_entered" from="Menu/VBoxContainer/Buttons/VBoxContainer/OptionsButton/OptionsLabel" to="Menu/VBoxContainer/Buttons/VBoxContainer/OptionsButton/OptionsLabel" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Menu/VBoxContainer/Buttons/VBoxContainer/OptionsButton/OptionsLabel" to="Menu/VBoxContainer/Buttons/VBoxContainer/OptionsButton/OptionsLabel" method="_on_mouse_exited"]
+[connection signal="pressed" from="Menu/VBoxContainer/Buttons/VBoxContainer/CreditsButton" to="MenuManager" method="_on_credits_button_pressed"]
+[connection signal="mouse_entered" from="Menu/VBoxContainer/Buttons/VBoxContainer/CreditsButton/CreditsLabel" to="Menu/VBoxContainer/Buttons/VBoxContainer/CreditsButton/CreditsLabel" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Menu/VBoxContainer/Buttons/VBoxContainer/CreditsButton/CreditsLabel" to="Menu/VBoxContainer/Buttons/VBoxContainer/CreditsButton/CreditsLabel" method="_on_mouse_exited"]
+[connection signal="pressed" from="Menu/VBoxContainer/Buttons/VBoxContainer/QuitButton" to="MenuManager" method="_on_quit_button_pressed"]
+[connection signal="mouse_entered" from="Menu/VBoxContainer/Buttons/VBoxContainer/QuitButton/QuitLabel" to="Menu/VBoxContainer/Buttons/VBoxContainer/QuitButton/QuitLabel" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Menu/VBoxContainer/Buttons/VBoxContainer/QuitButton/QuitLabel" to="Menu/VBoxContainer/Buttons/VBoxContainer/QuitButton/QuitLabel" method="_on_mouse_exited"]
+[connection signal="pressed" from="Credits/MarginContainer/Button" to="Credits" method="_on_button_pressed"]
