@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="Synapse"
+run/main_scene="uid://cshrfg1c5jgy"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+ResourceMan="*res://scripts/ResourceManager.gd"
 
 [dotnet]
 
