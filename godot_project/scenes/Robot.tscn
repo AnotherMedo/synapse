@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqxvz8a1b2c3d"]
+
+[ext_resource type="Script" path="res://scripts/Robot.gd" id="1_robot"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+radius = 10.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2"]
+radius = 50.0
+
+[node name="Robot" type="CharacterBody2D"]
+script = ExtResource("1_robot")
+collision_layer = 1
+collision_mask = 1
+
+[node name="Sprite" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_2")
+
+[node name="ResourceDetector" type="Timer" parent="."]
+wait_time = 1.0
+autostart = true
