@@ -56,6 +56,9 @@ func _ready():
 	# Set up the hub position
 	setup_hub()
 	
+	# ===== ADD THIS LINE =====
+	setup_background()
+	
 	# Initialize existing resources
 	setup_existing_resources()
 	
@@ -77,6 +80,109 @@ func _ready():
 	
 	print("OpenWorldScene loaded successfully!")
 
+func setup_background_complicated():
+	"""Create a natural-looking varied background"""
+	var background_layer = get_node_or_null("Background")
+	if not background_layer or not background_layer.tile_set:
+		print("Background layer or tileset not found")
+		return
+	
+	print("Setting up natural background...")
+	
+	# Generate noise for natural variation
+	var noise = FastNoiseLite.new()
+	noise.seed = randi()
+	noise.frequency = 0.1
+	noise.noise_type = FastNoiseLite.TYPE_PERLIN
+	
+	# Create varied terrain
+	for x in range(-100, 150):
+		for y in range(-100, 150):
+			var source_id = 0
+			var atlas_coords: Vector2i
+			
+			# Get noise value for this position
+			var noise_value = noise.get_noise_2d(x, y)
+			
+			# Create natural terrain based on noise
+			if noise_value > 0.3:  # High areas - rocky/dirt
+				atlas_coords = Vector2i(randi() % 2, 2)  # Row 2 tiles (rocky)
+			elif noise_value > 0.1:  # Medium areas - mixed grass
+				atlas_coords = Vector2i(randi() % 4, 1)  # Row 1 tiles (mixed)
+			elif noise_value > -0.1:  # Low areas - grass
+				atlas_coords = Vector2i(randi() % 3, 0)  # Row 0 tiles (grass)
+			else:  # Very low areas - dark grass/forest floor
+				atlas_coords = Vector2i(3, 0)  # Specific darker tile
+			
+			# Add some completely random variation (10% chance)
+			if randi() % 10 == 0:
+				atlas_coords = Vector2i(randi() % 4, randi() % 3)
+			
+			background_layer.set_cell(Vector2i(x, y), source_id, atlas_coords, 0)
+	
+	# Add some patches of different terrain for extra variation
+	add_terrain_patches(background_layer)
+	
+	print("Natural background setup complete")
+
+func add_terrain_patches(background_layer: TileMapLayer):
+	"""Add patches of different terrain types for variety"""
+	
+	# Add some clearings (dirt patches)
+	for i in range(8):  # 8 clearings
+		var center_x = randi_range(-80, 120)
+		var center_y = randi_range(-80, 120)
+		var patch_size = randi_range(3, 8)
+		
+		for x in range(center_x - patch_size, center_x + patch_size):
+			for y in range(center_y - patch_size, center_y + patch_size):
+				var distance = Vector2(x - center_x, y - center_y).length()
+				if distance < patch_size and randi() % 3 != 0:  # Not perfect circles
+					background_layer.set_cell(Vector2i(x, y), 0, Vector2i(randi() % 2, 2), 0)
+	
+	# Add some forest dense areas
+	for i in range(5):  # 5 dense forest patches
+		var center_x = randi_range(-80, 120)
+		var center_y = randi_range(-80, 120)
+		var patch_size = randi_range(5, 12)
+		
+		for x in range(center_x - patch_size, center_x + patch_size):
+			for y in range(center_y - patch_size, center_y + patch_size):
+				var distance = Vector2(x - center_x, y - center_y).length()
+				if distance < patch_size and randi() % 4 != 0:
+					background_layer.set_cell(Vector2i(x, y), 0, Vector2i(3, randi() % 2), 0)
+
+func setup_background():
+	"""Simpler but still varied background"""
+	var background_layer = get_node_or_null("Background")
+	if not background_layer or not background_layer.tile_set:
+		print("Background layer or tileset not found")
+		return
+	
+	print("Setting up varied background...")
+	
+	for x in range(-100, 150):
+		for y in range(-100, 150):
+			var source_id = 0
+			var atlas_coords: Vector2i
+			
+			# Create zones based on position
+			var zone = (abs(x) + abs(y)) % 20
+			
+			if zone < 10:  # Grass areas
+				atlas_coords = Vector2i(randi() % 3, 0)
+			elif zone < 15:  # Mixed areas  
+				atlas_coords = Vector2i(randi() % 4, 1)
+			else:  # Rocky/dirt areas
+				atlas_coords = Vector2i(randi() % 2, 2)
+			
+			# Add random variation
+			if randi() % 15 == 0:  # 1/15 chance for random tile
+				atlas_coords = Vector2i(randi() % 4, randi() % 3)
+			
+			background_layer.set_cell(Vector2i(x, y), source_id, atlas_coords, 0)
+	
+	print("Varied background setup complete")
 func setup_resource_manager():
 	# Check if ResourceManager exists as singleton
 	var singletons = Engine.get_singleton_list()
@@ -438,14 +544,13 @@ func setup_compact_ui():
 	total_label.add_theme_color_override("font_color", Color.YELLOW)
 	ui_container.add_child(total_label)
 	
-	# Compact instructions - bottom of screen
+	# ===== UPDATED INSTRUCTIONS WITH CORRECT KEYS =====
 	var instructions = Label.new()
-	instructions.text = "WASD: Move | Enter: Interact | Space: Debug Spawn"
+	instructions.text = "Arrow Keys: Move | P: Pick up/Drop Robot | U: Upgrade Robot | Space: Debug Spawn"
 	instructions.position = Vector2(10, get_viewport().size.y - 30)
 	instructions.add_theme_color_override("font_color", Color.LIGHT_GRAY)
 	instructions.z_index = 50
 	add_child(instructions)
-
 func update_robot_ui():
 	"""Update COMPACT UI with current robot status"""
 	var robot = get_node_or_null("Robot")

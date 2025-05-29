@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dd43jkiri1pyh"]
+[gd_scene load_steps=6 format=3 uid="uid://dd43jkiri1pyh"]
 
 [ext_resource type="Script" uid="uid://ci22pfkgsea05" path="res://scripts/OpenWorldScene.gd" id="1_a1b2c"]
+[ext_resource type="TileSet" uid="uid://dr2586osu0e8v" path="res://sprites/forest_tileset.tres" id="1_vnjk2"]
 [ext_resource type="PackedScene" uid="uid://bqxv08a1b2c3d" path="res://scenes/Robot.tscn" id="2_d3e4f"]
 [ext_resource type="PackedScene" uid="uid://c4d5e6f7g8iai" path="res://scenes/Player.tscn" id="3_g5h6i"]
 
@@ -9,6 +10,11 @@ radius = 12.0
 
 [node name="OpenWorldScene" type="Node2D"]
 script = ExtResource("1_a1b2c")
+
+[node name="Background" type="TileMapLayer" parent="."]
+tile_set = ExtResource("1_vnjk2")
+
+[node name="Foreground" type="TileMapLayer" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("3_g5h6i")]
 position = Vector2(150, 200)
