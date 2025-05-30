@@ -15,6 +15,11 @@ run/main_scene="uid://davwb8r1gf5sh"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Globals="*res://BinaryPuzzle/scripts/Globals.gd"
+MusicPlayer="*res://scenes/MusicPlayer.tscn"
+
 [display]
 
 window/size/mode=2

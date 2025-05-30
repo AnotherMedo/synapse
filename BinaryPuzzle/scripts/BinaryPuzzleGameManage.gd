@@ -12,7 +12,7 @@ const TILE_SIZE = 16;
 
 var is_out_of_barrier:bool = false
 const grid_placement_barrier = Rect2(32,0,224,128)
-const hidden_position: Vector2 = Vector2(-32,-32)
+const hidden_position: Vector2 = Vector2(-9999,-9999)
 
 var selected_logic_gate = null;
 var logic_gate_instance: LogicGate;

@@ -22,8 +22,6 @@ const PuzzleTest = preload("res://BinaryPuzzle/scripts/PuzzleTest.gd")
 const BinaryPuzzleGameManager = preload("res://BinaryPuzzle/scripts/BinaryPuzzleGameManage.gd")
 const binary_puzzle_scene = preload("res://scenes/BinaryPuzzleScene.tscn")
 
-var succeeded_puzzles: Array[String]
-
 func _draw() -> void:
 	_connect_nodes(n_0_1, n_not, 30)
 	_connect_nodes(n_not, n_and, 30)
@@ -40,10 +38,10 @@ func _connect_nodes(node1, node2, margin):
 	draw_line(node1.global_position + offset1, node2.global_position + offset2, Color.WHITE, 1.0)
 
 func _ready() -> void:
-	if !succeeded_puzzles:
-		succeeded_puzzles = []
+	if !Globals.succeeded_puzzles:
+		Globals.succeeded_puzzles = []
 		
-	for p in succeeded_puzzles:
+	for p in Globals.succeeded_puzzles:
 		set_done(p)
 	
 	n_0_1.pressed.connect(
@@ -208,8 +206,8 @@ func XOrPuzzle():
 	
 func set_done(puzzle_name: String):
 	
-	if !succeeded_puzzles.has(puzzle_name):
-		succeeded_puzzles.append(puzzle_name)
+	if !Globals.succeeded_puzzles.has(puzzle_name):
+		Globals.succeeded_puzzles.append(puzzle_name)
 	
 	match puzzle_name:
 		"0_1":

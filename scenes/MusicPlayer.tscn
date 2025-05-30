@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://x0lsmb8b8oya"]
+
+[ext_resource type="AudioStream" uid="uid://ewdaldnc7oil" path="res://assets/musics/Chillwave_Nightdrive.mp3" id="1_yvkaf"]
+[ext_resource type="Script" uid="uid://b8u0gidvtwc4n" path="res://BinaryPuzzle/scripts/MusicPlayer.gd" id="2_k52d1"]
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_yvkaf")
+autoplay = true
+attenuation = 0.0106722
+script = ExtResource("2_k52d1")

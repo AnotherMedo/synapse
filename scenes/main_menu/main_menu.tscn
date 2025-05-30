@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://davwb8r1gf5sh"]
+[gd_scene load_steps=19 format=3 uid="uid://davwb8r1gf5sh"]
 
 [ext_resource type="Script" uid="uid://cd0tb5hm616b6" path="res://scenes/main_menu/menu_manager.gd" id="1_3ovsr"]
 [ext_resource type="FontFile" uid="uid://i7ljui5x1pe1" path="res://assets/fonts/zatura/Zatura-Demo.otf" id="1_sk7su"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" uid="uid://d1td1eys6j87q" path="res://scenes/main_menu/main_menu_buttons.gd" id="5_wem23"]
 [ext_resource type="Script" uid="uid://cjwqnckegbq2l" path="res://scenes/main_menu/credits.gd" id="7_4xg86"]
 [ext_resource type="Script" uid="uid://v547od8hijhp" path="res://scenes/main_menu/options.gd" id="8_thkx5"]
-[ext_resource type="AudioStream" uid="uid://ewdaldnc7oil" path="res://assets/musics/Chillwave_Nightdrive.mp3" id="10_x2yjq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x2yjq"]
 shader = ExtResource("2_thkx5")
@@ -731,10 +730,6 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_x2yjq")
-autoplay = true
 
 [connection signal="timeout" from="Menu/VBoxContainer/Title/S1Control/Center/S1/Delay" to="Menu/VBoxContainer/Title/S1Control/Center/S1" method="_on_delay_timeout"]
 [connection signal="timeout" from="Menu/VBoxContainer/Title/YControl/Center/Y/Delay" to="Menu/VBoxContainer/Title/YControl/Center/Y" method="_on_delay_timeout"]
