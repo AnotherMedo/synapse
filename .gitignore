@@ -1,3 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+godot_project/scripts/OpenWorldScene.gd.uid
+godot_project/scripts/Player.gd.uid
+godot_project/scripts/ResourceManager.gd.uid
+godot_project/scripts/Robot.gd.uid
